@@ -1,13 +1,15 @@
-import React from 'react'
-import {Link} from "react-router-dom"
-import splashlogo from "../../assets/splashlogo.jpg"
+import React from "react";
+import "./Splash.css";
+import splashlogo from "../../assets/splashlogo.jpg";
 
 function Splash() {
   return (
-    <>
-        <img src={splashlogo} alt="splashscreen"/>
-    </>
-  )
+    <div className="splash-screen">
+      <div>
+        <img src={splashlogo} alt="splashscreen" />
+      </div>
+    </div>
+  );
 }
 
 export default Splash;

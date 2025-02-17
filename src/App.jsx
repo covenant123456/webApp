@@ -1,19 +1,22 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import {Routes, Route} from "react-router-dom"
-import Home from "./pages/Home/Home.jsx"
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home/Home.jsx";
+import Home02 from "./pages/Home/Home02.jsx";
+import Home03 from "./pages/Home/Home03.jsx";
+import Home04 from "./pages/Home/Home04.jsx";
+import Login from "./pages/Home/Login.jsx";
 
 function App() {
-
   return (
     <>
       <Routes>
-        <Route path="*" element={<Home/>}/>
+        <Route path="/" element={<Home />} />
+        <Route path="/onboard" element={<Home02 />} />
+        <Route path="/onboard/1" element={<Home03 />} />
+        <Route path="/onboard/2" element={<Home04 />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
