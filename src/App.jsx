@@ -14,6 +14,7 @@ function App() {
         <Route path="/onboard/1" element={<Home03 />} />
         <Route path="/onboard/2" element={<Home04 />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/user/dashboard" element={<UserDashboard />} />
       </Routes>
     </>
   );

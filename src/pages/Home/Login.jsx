@@ -3,11 +3,19 @@ import "./Home.css";
 import Onboard3 from "../../assets/onboard3.png";
 import { createAppKit } from "@reown/appkit/react";
 import { WagmiProvider } from "wagmi";
-import { arbitrum, mainnet } from "@reown/appkit/networks";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { WagmiAdapter } from "@reown/appkit-adapter-wagmi";
+import {
+  mainnet,
+  arbitrum,
+  base,
+  scroll,
+  polygon,
+} from "@reown/appkit/networks";
+import { useAccount } from "wagmi";
+import { useNavigate } from "react-router-dom";
+import LoginContext from "../../AuthContext/loginContext";
 
-// 0. Setup queryClient
 const queryClient = new QueryClient();
 
 const projectId = process.env.PROJECT_ID;
@@ -22,10 +30,8 @@ const metadata = {
   icons: ["https://avatars.githubusercontent.com/u/179229932"],
 };
 
-// 3. Set the networks
-const networks = [mainnet, arbitrum];
+const networks = [mainnet, arbitrum, base, scroll, polygon];
 
-// 4. Create Wagmi Adapter
 const wagmiAdapter = new WagmiAdapter({
   storage: createStorage({
     storage: cookieStorage,
@@ -35,7 +41,6 @@ const wagmiAdapter = new WagmiAdapter({
   ssr: true,
 });
 
-// 5. Create modal
 createAppKit({
   adapters: [wagmiAdapter],
   networks,
@@ -58,6 +63,22 @@ export function AppKitProvider({ children }) {
   );
 }
 
+const { isConnected } = useAccount();
+const navigate = useNavigate();
+const [connected, itIsConnected] = React.useState(true);
+
+React.useEffect(() => {
+  itIsConnected(isConnected);
+  const { setIsLoggedIn } = React.useContext(LoginContext);
+
+  if (connected) {
+    navigate("/User/dashboard");
+    setIsLoggedIn(true);
+  } else {
+    navigate("/login");
+  }
+}, [connected]);
+
 function Login() {
   return (
     <div className="onboard">
@@ -73,9 +94,8 @@ function Login() {
       </section>
       <section>
         <button className="login-btn">
-          <v3m-button />
+          <appkit-button />
         </button>
-        <v3m-network-button />
       </section>
     </div>
   );
