@@ -2,11 +2,12 @@ import React from "react";
 import "./Home.css";
 import Onboard3 from "../../assets/onboard3.png";
 import { createAppKit } from "@reown/appkit/react";
-import { WagmiProvider } from "wagmi";
+import { WagmiProvider, createStorage, cookieStorage } from "wagmi";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { WagmiAdapter } from "@reown/appkit-adapter-wagmi";
 import {
   mainnet,
+  sepolia,
   arbitrum,
   base,
   scroll,
@@ -18,10 +19,10 @@ import LoginContext from "../../AuthContext/loginContext";
 
 const queryClient = new QueryClient();
 
-const projectId = process.env.PROJECT_ID;
-if (!projectId) {
-  throw new Error("ProjectId is not defined");
-}
+const projectId = process.env.REACT_APP_PROJECT_ID;
+// if (!projectId) {
+//   throw new Error("ProjectId is not defined");
+// }
 
 const metadata = {
   name: "AppKit",
@@ -30,7 +31,7 @@ const metadata = {
   icons: ["https://avatars.githubusercontent.com/u/179229932"],
 };
 
-const networks = [mainnet, arbitrum, base, scroll, polygon];
+const networks = [mainnet, sepolia, arbitrum, base, scroll, polygon];
 
 const wagmiAdapter = new WagmiAdapter({
   storage: createStorage({
@@ -63,23 +64,23 @@ export function AppKitProvider({ children }) {
   );
 }
 
-const { isConnected } = useAccount();
-const navigate = useNavigate();
-const [connected, itIsConnected] = React.useState(true);
-
-React.useEffect(() => {
-  itIsConnected(isConnected);
-  const { setIsLoggedIn } = React.useContext(LoginContext);
-
-  if (connected) {
-    navigate("/User/dashboard");
-    setIsLoggedIn(true);
-  } else {
-    navigate("/login");
-  }
-}, [connected]);
-
 function Login() {
+  const { isConnected } = useAccount();
+  const navigate = useNavigate();
+  const [connected, itIsConnected] = React.useState(true);
+
+  React.useEffect(() => {
+    itIsConnected(isConnected);
+    const { setIsLoggedIn } = React.useContext(LoginContext);
+
+    if (connected) {
+      navigate("/User/dashboard");
+      setIsLoggedIn(true);
+    } else {
+      navigate("/login");
+    }
+  }, [connected]);
+
   return (
     <div className="onboard">
       <section>

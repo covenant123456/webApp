@@ -13,12 +13,14 @@ function Home() {
   React.useEffect(() => {
     setTimeout(() => {
       setRemoveSplash(true);
-    }, 50000);
+    }, 500);
   }, []);
 
   function handleClick() {
     navigate("/onboard");
   }
+
+  console.log(roleData);
 
   return (
     <>
@@ -33,7 +35,7 @@ function Home() {
           </section>
 
           <div className="user-rider">
-            {roleData.map((item, idx) => {
+            {/* {roleData.map((item, idx) => {
               return (
                 <section
                   onClick={() => handleClick(idx)}
@@ -54,8 +56,53 @@ function Home() {
                     </div>
                   </div>
                 </section>
-              );
-            })}
+              ); */}
+            <section
+              onClick={handleClick}
+              // style={{ borderColor: isPress ? "#FF851B" : "#666666" }}
+              className="rider"
+            >
+              <div>
+                <img src={Userimg} />
+              </div>
+              <div>
+                <div>
+                  <p className="signup-headR">Sign up as a User</p>
+                </div>
+                <div>
+                  <p className="signup-body">
+                    Earn money by delivering packages while enjoying the
+                    flexibility to work at your convenience. Stay updated with
+                    real-time job notifications and take control of your
+                    schedule effortlessly
+                  </p>
+                </div>
+              </div>
+            </section>
+            ;
+            <section
+              onClick={handleClick}
+              // style={{ borderColor: isPress ? "#FF851B" : "#666666" }}
+              className="rider"
+            >
+              <div>
+                <img src={Riderimg} />
+              </div>
+              <div>
+                <div>
+                  <p className="signup-headR">Sign up as a Rider</p>
+                </div>
+                <div>
+                  <p className="signup-body">
+                    Send and track your deliveries effortlessly with a fast and
+                    reliable network of riders. Enjoy a secure payment and
+                    tracking system that ensures your packages reach their
+                    destination safely and on time
+                  </p>
+                </div>
+              </div>
+            </section>
+            ;
           </div>
 
           <p>
