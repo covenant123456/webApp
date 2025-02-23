@@ -16,7 +16,7 @@ function Home04() {
   return (
     <div className="onboard">
       <section>
-        <img src={Onboard2} alt="onboard-img" />
+        <img src={Onboard2} alt="onboard-img" loading="eager" />
       </section>
       <section>
         <h1>Secure Payments for Peace of Mind</h1>

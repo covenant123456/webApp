@@ -39,6 +39,7 @@ function Home() {
                   onClick={() => handleClick(idx)}
                   // style={{ borderColor: isPress ? "#FF851B" : "#666666" }}
                   className={item.role}
+                  key={idx}
                 >
                   <div>
                     <img src={item.riderImg} />

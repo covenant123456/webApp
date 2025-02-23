@@ -15,7 +15,7 @@ function Home02() {
   return (
     <div className="onboard">
       <section>
-        <img src={Onboard0} alt="onboard img" />
+        <img src={Onboard0} alt="onboard img" loading="eager" />
       </section>
       <section>
         <h1>Swift, Secure, Seamless Deliveries</h1>

@@ -16,7 +16,7 @@ function Home03() {
   return (
     <div className="onboard">
       <section>
-        <img src={Onboard1} alt="onboard img" />
+        <img src={Onboard1} alt="onboard img" loading="eager" />
       </section>
       <section>
         <h1>Track Your Orders in Real Time</h1>

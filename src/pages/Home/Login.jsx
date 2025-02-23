@@ -17,7 +17,8 @@ import { useNavigate } from "react-router-dom";
 import LoginContext from "../../AuthContext/loginContext";
 
 const queryClient = new QueryClient();
-const projectId = process.env.REACT_APP_PROJECT_ID;
+const projectId = import.meta.env.VITE_PROJECT_ID;
+console.log("Project ID:", projectId);
 
 if (!projectId) {
   throw new Error("ProjectId is not defined");
@@ -90,10 +91,8 @@ function Login() {
         </p>
       </section>
       <section>
-        <button className="login-btn">
-          {/* Replace with the correct button component from AppKit */}
-          <AppKitButton />
-        </button>
+        <appkit-button />
+        {/* <appkit-button className="login-btn" /> */}
       </section>
     </div>
   );
