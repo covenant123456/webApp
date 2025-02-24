@@ -62,7 +62,7 @@ export function AppKitProvider({ children }) {
   );
 }
 
-function Login() {
+function Signup() {
   const { isConnected } = useAccount();
   const navigate = useNavigate();
   const { setIsLoggedIn, user, rider } = useContext(LoginContext);
@@ -70,9 +70,11 @@ function Login() {
 
   useEffect(() => {
     setConnected(isConnected);
-    if (isConnected) {
+    if (isConnected && user) {
       setIsLoggedIn(true);
       navigate("/User/dashboard");
+    } else if (isConnected && rider) {
+      navigate("/Rider/dashboard");
     } else {
       navigate("/login");
     }
@@ -98,4 +100,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Signup;

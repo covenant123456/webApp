@@ -3,10 +3,12 @@ import { Link, useNavigate } from "react-router-dom";
 import Splash from "../../components/Splash/Splash";
 import "./Home.css";
 import { roleData } from "../../data.js";
+import LoginContext from "../../AuthContext/loginContext";
 
 function Home() {
   const [removeSplash, setRemoveSplash] = React.useState(false);
   const navigate = useNavigate();
+  const { setUser, setRider } = React.useContext(LoginContext);
 
   React.useEffect(() => {
     setTimeout(() => {
@@ -14,7 +16,14 @@ function Home() {
     }, 500);
   }, []);
 
-  function handleClick() {
+  function handleClick(index) {
+    if (index == 0) {
+      setRider("rider");
+      console.log("rider is picked");
+    } else if (index == 1) {
+      setUser("user");
+      console.log("user is picked");
+    }
     navigate("/onboard");
   }
 
