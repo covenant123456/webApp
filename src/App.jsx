@@ -4,7 +4,7 @@ import Home02 from "./pages/Home/Home02.jsx";
 import Home03 from "./pages/Home/Home03.jsx";
 import Home04 from "./pages/Home/Home04.jsx";
 import Signup from "./pages/Home/SignUp.jsx";
-import Login from "./pages./pages/Home/Login.jsx";
+import Login from "./pages/Home/Login.jsx";
 import UserDashboard from "./pages/User/UserDashboard.jsx";
 
 function App() {
